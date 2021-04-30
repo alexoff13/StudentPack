@@ -71,13 +71,14 @@ class Lesson:
             self.rating_log[self.__students[index]] = self.__teacher.add_marks(self.__students[index])
 
 
-class Fizruk(Teacher):
-    def __init__(self, good_mood=True):
-        super(Fizruk, self).__init__(good_mood)
+class LazyTeacher(Teacher):
+    def __init__(self, const_mark: int = 5, good_mood=True):
+        super(LazyTeacher, self).__init__(good_mood)
+        self.__const_mark = const_mark if 2 <= const_mark <= 5 else 5
 
     def add_marks(self, student: Student) -> int:
-        student.add_mark(5)
-        return 5
+        student.add_mark(self.__const_mark)
+        return self.__const_mark
 
 
 class Parent:
